@@ -6,10 +6,12 @@ const calculateBmi = (height: number, weight: number): string => {
   if (bmi < 18.5) return `BMI: ${bmi.toFixed(2)} underweight`;
   if (bmi <= 24.9) return `BMI: ${bmi.toFixed(2)} normalweight`;
   if (bmi > 24.9) return `BMI ${bmi.toFixed(2)} overweight`;
+
+  return 'Check your inputed argument again.';
 };
 
-const height: number = Number(process.argv[2]);
-const weight: number = Number(process.argv[3]);
+const height = Number(process.argv[2]);
+const weight = Number(process.argv[3]);
 
 try {
   if (height && weight) {
@@ -18,5 +20,9 @@ try {
     throw new Error('The number of arguments are not correct.');
   }
 } catch (error) {
-  console.log(error.message);
+  if (error instanceof Error) {
+    console.log(error.message);
+  }
 }
+
+export default calculateBmi;

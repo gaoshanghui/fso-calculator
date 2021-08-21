@@ -50,5 +50,7 @@ try {
     throw new Error('arguments should be a number');
   }
 } catch (error) {
-  console.log(error.message);
+  if (error instanceof Error) {
+    console.log(error.message);
+  }
 }

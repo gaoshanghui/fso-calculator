@@ -37,20 +37,22 @@ const calculateExercises = (
 
 // In the command line, the first argument it the target value.
 // The rest of the values will be converted into an array, as the week exercises hours.
-const targetHour = Number(process.argv[2]);
-const exercisesHoursString = process.argv.slice(3, process.argv.length);
-const exercisesHours = exercisesHoursString.map((item) => Number(item));
+// const targetHour = Number(process.argv[2]);
+// const exercisesHoursString = process.argv.slice(3, process.argv.length);
+// const exercisesHours = exercisesHoursString.map((item) => Number(item));
 
-try {
-  const argumentTests = exercisesHours.filter((hour) => isNaN(hour));
-  if (argumentTests.length === 0) {
-    console.log('exercisesHours:', exercisesHours);
-    console.log(calculateExercises(exercisesHours, targetHour));
-  } else {
-    throw new Error('arguments should be a number');
-  }
-} catch (error) {
-  if (error instanceof Error) {
-    console.log(error.message);
-  }
-}
+// try {
+//   const argumentTests = exercisesHours.filter((hour) => isNaN(hour));
+//   if (argumentTests.length === 0) {
+//     console.log('exercisesHours:', exercisesHours);
+//     console.log(calculateExercises(exercisesHours, targetHour));
+//   } else {
+//     throw new Error('arguments should be a number');
+//   }
+// } catch (error) {
+//   if (error instanceof Error) {
+//     console.log(error.message);
+//   }
+// }
+
+export default calculateExercises;

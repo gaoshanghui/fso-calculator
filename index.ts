@@ -1,7 +1,9 @@
 import express from 'express';
-import bmiCalculator from './bmiCalculator';
+import calculateBmi from './bmiCalculator';
+import calculateExercises from './exerciseCalculator';
 
 const app = express();
+app.use(express.json());
 
 app.get('/hello', (_req, res) => {
   res.send('Hello Full Stack!');
@@ -13,7 +15,7 @@ app.get('/bmi', (req, res) => {
 
   try {
     if (!isNaN(height) && !isNaN(weight)) {
-      const bmi = bmiCalculator(height, weight);
+      const bmi = calculateBmi(height, weight);
       const result = {
         height,
         weight,
@@ -30,6 +32,29 @@ app.get('/bmi', (req, res) => {
         error: error.message,
       });
     }
+  }
+});
+
+app.post('/exercise', (req, res) => {
+  const exercisesHours: number[] = req.body.daily_exercises;
+  const target: number = req.body.target;
+
+  try {
+    if (!exercisesHours || !target) {
+      throw new Error('parameters missing');
+    }
+
+    const argumentTests = exercisesHours.filter((hour) => isNaN(hour));
+    if (argumentTests.length === 0) {
+      const result = calculateExercises(exercisesHours, target);
+      res.json(result);
+    } else {
+      throw new Error('arguments should be a number');
+    }
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
   }
 });
 

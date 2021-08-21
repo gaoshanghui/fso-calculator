@@ -10,19 +10,19 @@ const calculateBmi = (height: number, weight: number): string => {
   return 'Check your inputed argument again.';
 };
 
-const height = Number(process.argv[2]);
-const weight = Number(process.argv[3]);
+// const height = Number(process.argv[2]);
+// const weight = Number(process.argv[3]);
 
-try {
-  if (height && weight) {
-    console.log(calculateBmi(height, weight));
-  } else {
-    throw new Error('The number of arguments are not correct.');
-  }
-} catch (error) {
-  if (error instanceof Error) {
-    console.log(error.message);
-  }
-}
+// try {
+//   if (height && weight) {
+//     console.log(calculateBmi(height, weight));
+//   } else {
+//     throw new Error('The number of arguments are not correct.');
+//   }
+// } catch (error) {
+//   if (error instanceof Error) {
+//     console.log(error.message);
+//   }
+// }
 
 export default calculateBmi;

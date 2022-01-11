@@ -1,4 +1,4 @@
-# fso-exercise-calculator
+# Calculator
 
 ## Description
 
